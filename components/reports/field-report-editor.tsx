@@ -20,16 +20,14 @@ const schema = z.object({
   title: z.string().min(2),
   userEnteredNotes: z.string().min(2),
   aiDraftNarrative: z.string().optional(),
-  photos: z
-    .array(
-      z.object({
-        id: z.string().optional(),
-        url: z.string().min(2),
-        caption: z.string().optional(),
-      })
-    )
-    .default([]),
-  disclaimers: z.array(z.string()).default([]),
+  photos: z.array(
+    z.object({
+      id: z.string().optional(),
+      url: z.string().min(2),
+      caption: z.string().optional(),
+    })
+  ),
+  disclaimers: z.array(z.string()),
 });
 
 type FormValues = z.infer<typeof schema>;
