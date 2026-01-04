@@ -25,7 +25,8 @@ export function LoginForm({ firms }: { firms: FirmWithUsers[] }) {
     () => firms.find((f) => f.id === selectedFirmId) ?? firms[0],
     [selectedFirmId, firms]
   );
-  const [selectedUserId, setSelectedUserId] = useState(selectedFirm?.users[0]?.id);
+  const initialUserId = selectedFirm?.users[0]?.id ?? "";
+  const [selectedUserId, setSelectedUserId] = useState(initialUserId);
 
   const handleSubmit = async () => {
     const user = selectedFirm?.users.find((u) => u.id === selectedUserId);
@@ -48,7 +49,7 @@ export function LoginForm({ firms }: { firms: FirmWithUsers[] }) {
             onValueChange={(value) => {
               setSelectedFirmId(value);
               const firm = firms.find((f) => f.id === value);
-              setSelectedUserId(firm?.users[0]?.id);
+              setSelectedUserId(firm?.users[0]?.id ?? "");
             }}
           >
             <SelectTrigger>
