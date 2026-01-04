@@ -22,7 +22,7 @@ const schema = z.object({
   aiDraftNarrative: z.string().optional(),
   photos: z.array(
     z.object({
-      id: z.string().optional(),
+      id: z.string(),
       url: z.string().min(2),
       caption: z.string().optional(),
     })
